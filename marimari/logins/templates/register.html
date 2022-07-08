@@ -1,0 +1,68 @@
+{% load static %}{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <title>Sign Up</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/forms.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}"/>
+</head>
+
+<body  class="w-100">
+    <div class="container-fluid mb-3">
+        {% comment %} navbar section {% endcomment %}
+  
+        <div class ="row d-flex align-items-center justify-content-center mx-5">
+          <div class ="col-md-5 ">
+            <h2 class ="text-white mt-3 h2"> We offer modern solutions for growing your business</h2>
+            <img src="{% static 'img/OIP.jpg' %}" alt=""  class="image-fluid mb-2 rounded-3 m-2" width= "22%" height = "10.5%">
+            <img src="{% static 'img/lipa.png' %}" alt=""  class="image-fluid mb-2 rounded-3 m-2" width= "22%" height = "11%">
+            <p class ="lead text-white mt-4 border-top border-white">We are team of talented designers making websites with Bootstrap</p>
+            <div class="container">  
+                 <form method="POST" class="text-white">
+                     {% csrf_token %}
+                     {% for hidden in form.hidden_fields %}
+                         {{ hidden }}
+                     {% endfor %}
+         
+                     {% for field in form.visible_fields %}
+                     <div class="form-group">
+                         <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                         {{ field|add_class:'form-control' }}
+                         {% for error in field.errors %}
+                         <span class="help-block">{{ error }}</span>
+                         {% endfor %}
+                     </div>
+                     {% endfor %}
+                     <div class="form-group text-center">
+                         <button type="submit" class="btn btn-danger w-100 my-2">
+                         <span class="glyphicon glyphicon-ok"></span> Create Account
+                         </button>
+                         <span  class="text-white">If you already have an account click</span>
+                         <a href="{% url 'signin' %}" class="link-warning">Sign In</a>
+                     </div>
+                 </form>
+                
+                 
+            </div>
+          </div>
+          <div class ="col-md-6">
+            <img src="{% static 'img/123.svg' %}" alt="" class="image-fluid" width= "100%" height = "100%">
+          </div>
+        </div> 
+          <div class="text-white text-center bg-dark">
+            © Copyright <strong><span>MariMare</span></strong>. All Rights Reserved || Designed by<a href="#">SaaSTechy</a>
+          </div>
+    </div>
+   
+</body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="" async defer></script>
+</html>

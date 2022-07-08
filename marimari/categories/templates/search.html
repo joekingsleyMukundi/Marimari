@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{%block title %}
+    Search
+{% endblock %}
+{% block css %}
+{% endblock %}
+{% block 'content' %}
+    <div class="row">
+        <div class="container">
+            <div class="col-md-7">
+                <h4 class="h4 text-center">Search results</h4>
+                </hr>
+                {% if object_list %}
+                {% for product in object_list %}
+                    {% include 'search_item.html' %}
+                {% endfor %}
+                {% else %}
+                <p class="card-text text-center">search not found</p>
+                {% endif %}
+            </div>
+            <div class="col-md-5">
+                <div class="container-fluid">
+                    <div class="filter-content">
+                        <h3 class="h3 filter-title">Prices Filter</h3>
+                        <form action="{% url 'store:search-filter' %}" class="filter-form" method="GET">
+                            <input type="number" class="search-filter" name="max-price" placeholder="Max-price">
+                            <input type="number" class="search-filter" name="min-price" placeholder="Min-price">
+                            <button type="submit" class="btn button-filter">Filter<i class="fa fa-arrow-circle-right"></i></button>
+                        </form>
+                        <div class="cart-total filter-items">
+                            <p>
+                                <a href="{% url 'store:one'   %}" class="price-list">below KES 10000 <i class="fas fa-hand-point-right bg-danger"></i></a>
+                            </p>
+                            <p>
+                                <a href="{% url 'store:two'  %}"  class="price-list">KES 10001-50000<i class="fas fa-hand-point-right"></i></a>
+                            </p>
+                            <p>
+                                <a href="{% url 'store:three'  %}"  class="price-list">KES 50001-100000 <i class="fas fa-hand-point-right"></i></a>
+                            </p>
+                            <p>
+                                <a href="{% url 'store:four'  %}"  class="price-list">KES 100001-150000 <i class="fas fa-hand-point-right"></i></a>
+                            </p>
+                            <p>
+                                <a href="{% url 'store:five'  %}"  class="price-list">KES 150001 and above <i class="fas fa-hand-point-right"></i></a>
+                            </p>               
+                        </div>
+                    </div>
+                </div>
+            </div>
+           </div>
+        <div>
+    </div>
+       
+{% endblock %}
+{% block scripts %}
+{% endblock %}

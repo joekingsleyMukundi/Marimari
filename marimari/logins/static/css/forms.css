@@ -1,0 +1,22 @@
+ .form-control {
+    border-color:black !important;
+    box-shadow: 0 0 0 0.2rem rgba(29, 29, 29, 0.212) !important;
+  } 
+
+.form-control:focus {
+    border-color: #d10024 !important;
+    box-shadow: 0 0 0 0.2rem #d1002371 !important;
+  } 
+
+  .btn-danger{
+    background-color: #d10023dc;
+    color: #ffffff;
+    border-color: #d10023dc;
+  }
+  
+  .btn-danger:hover {
+    background-color: #d100239c;
+    color: #ffffff;
+    border-color: #d10023dc;
+  }
+

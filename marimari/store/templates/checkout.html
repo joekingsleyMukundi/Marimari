@@ -1,0 +1,127 @@
+{% extends 'base.html' %} {% load static %} {% block 'content' %}
+<section>
+    <div class="container-fluid m-3">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 280px;">
+                    <hr>
+                    <ul class="nav nav-pills flex-column mb-auto">
+                        <li>
+                            <a id="bank-nav" data-toggle="pill" href="#bank-tab" class="nav-link text-white">
+                                <svg class="bi me-2 " width="16" height="16"><use xlink:href="#speedometer2"/></svg>Bank
+                            </a>
+                        </li>
+                        <li>
+                            <a id="mpesa-nav" data-toggle="pill" href="#mpesa-tab" class="nav-link text-white">
+                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>Mpesa
+                            </a>
+                        </li>
+                        <li>
+                            <a id="summary-nav" data-toggle="pill" href="#summary-tab" class="nav-link text-white">
+                                <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"/></svg>Summary
+                            </a>
+                        </li>
+                    </ul>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-9">
+             <!-- Video 1 -->
+                <div id="id01" class="modal">
+                    <div class="modal-content">
+                        <div class="container-fluid mt-3">
+                            <span onclick="document.getElementById('id01').style.display='none'" class="closebtn">&times;</span>
+                            <img src="{% static 'img/download.png' %}" alt="" class="image-fluid spacer p-5 rounded-3 opacity-50" width= "10%" height = "10%">
+                            <p class="lead spacer text-decoration-underline">Enter Bank Details</p>
+                            <label for="card-name" class="lead border-4 spacer">NAME ON CARD:</label><BR>
+                            <input class="form-control form-styling borders" id="card-name" type="password" placeholder="Full Name On Card"><br><br>
+                            <label for="card-number" class="lead spacer">CARD NUMBER:</label><BR>
+                            <input class="form-control form-styling borders" id="card-number" type="text" placeholder="Card Number"><br><br>
+                            <label for="cvv " class="lead spacer">CVV NUMBER:</label><BR>
+                            <input class="form-control form-styling borders" id="cvv" type="text" placeholder="CVV"><br><br>
+                            <label for="expiry-date" class="lead spacer">EXPIRY DATE :</label><BR>
+                            <input class="form-control form-styling borders" id="expiry-date" type="text" placeholder="Expiry Date"><br><br>
+                            <button class="btn btons spacer">Pay Now</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div id="id02" class="modal">
+                <div class="modal-content">
+                    <div class="container-fluid">
+                        <span onclick="document.getElementById('id02').style.display='none'" class="closebtn">&times;</span>
+                        <img src="{% static 'img/mpesa1.png' %}" alt="" class="image-fluid mb-3 opacity-50 p-3 rounded-3" width= "20%" height = "10%">
+                        <p class="lead text-decoration-underline">Enter Phone Number</p>
+                        <form>
+                            <div class="form-floating ">
+                                <label for="floatingInput ">+254 </label>
+                                <input type="number" class="form-control borders" id="floatingInput " placeholder="701234567 "/>
+
+                            </div>
+                            <button class="btn btons" type="submit ">Pay Now</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            
+
+
+            <div class="tab-content">
+                <div class="tab-pane fade" id="bank-tab" role="tabpanel " aria-labelledby="bank-nav">
+                    <p class="lead">Click the button below to make payments via Bank</p>
+                    <button onclick="document.getElementById( 'id01').style.display='block'" class="btons">Pay now with Bank</button>
+
+                </div>
+                <div class="tab-pane fade" id="mpesa-tab" role="tabpanel" aria-labelledby="mpesa-nav">
+                    <p class="lead margin">Click the button below to make payments via M-pesa. </p>
+                    <button onclick="document.getElementById( 'id02').style.display='block' " class="btons">Pay Now with M-pesa</button>
+                </div>
+                <div class="tab-pane fade" id="summary-tab" role="tabpanel" aria-labelledby="summary-nav">
+                    <p class="lead margin">Click the button below to view Purchase summary</p>
+                    <button onclick="document.getElementById( 'id03').style.display='block'" class="btons">View Prurchase Summary</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% comment %} modal 3 {% endcomment %}
+
+    <div id="id03" class="modal">
+        <div class="modal-content">
+            <div class="container-fluid">
+                <span onclick="document.getElementById('id03').style.display='none'" class="closebtn">&times;</span>
+                <p class="lead spacer">View Purchase History</p>
+                <table>
+                    <thead>
+                      <tr class="w3-color">
+                        <th>PRODUCT</th>
+                        <th>PRICE</th>
+                        <th>RECEIPT</th>
+                      </tr>
+                    </thead>
+                    <tr>
+                      <td>-</td>
+                      <td>-</td>
+                      <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                    </tr>
+                  </table>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>{% endblock %}

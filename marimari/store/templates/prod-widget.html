@@ -1,0 +1,11 @@
+{% load static %}
+<div class="product-widget ">
+    <div class="product-img ">
+        <img src="{{product.image.url}}" class="image" alt="">
+    </div>
+    <div class="card-body product-body ">
+        <p class="product-category ">{{ product.category.category_name }}</p>
+        <h3 class="product-name  "><a href="#" >{{product.product_name}}</a></h3>
+        <h4 class="product-price h4">Ksh.{{ product.product_cost }}<del class="product-old-price ">Ksh.{{product.discounts}}</del></h4>
+    </div>
+</div>

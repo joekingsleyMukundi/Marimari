@@ -1,0 +1,16 @@
+{% load static %}
+<div class="cart-container">
+    <div class="cart">
+        <div class="items">
+            <div class="item">
+                <img src="{{product.image.url}}">
+                <div class="item-info">
+                    <h4 class="h4 item-name" style="color:black;">{{product.product_name}}</h4>
+                    <a href="{% url 'store:details' product.id %}" class="details">More info</a>
+                    <h5 class="h5"  style="color:black;">KES.{{product.product_cost}}</h5>
+                    <p>{{product.description}}<p>
+                </div>
+            </div>
+        </div>                  
+    </div>
+</div>

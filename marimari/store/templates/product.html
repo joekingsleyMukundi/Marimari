@@ -1,0 +1,40 @@
+{%load static%}
+<div class=" product">
+    <div class="product-img">
+        {% if product.image %}
+        <img src="{{product.image.url}}" class="image" alt="">
+        {% endif %}
+        <div class="product-label ">
+            <span class="sale ">-30%</span>
+            <span class="new ">NEW</span>
+        </div>
+    </div>
+    <div class="-body product-body">
+        <p class="product-category">{{ product.category.category_name }}</p>
+        <h3 class="product-name "><a href="#">{{ product.product_name }}</a></h3>
+        <h5 class="product-price"><span>Ksh.{{ product.product_cost }} <del class="product-old-price">Ksh.{{product.discounts}}</del></h5>
+        <div class="product-rating">
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star-o"></i>
+        </div>
+            <div class="product-btns">
+                {% if request.user.is_authenticated %}
+                    <a href="{% url 'orders:user_wishlist' product.id %}" data-toggle="tooltip"><i class="fa fa-heart-o"></i><span >Add to wishlist</span></a>
+                {% else %}
+                    <a href="#" data-toggle="tooltip"><i class="fa fa-heart-o"></i><span >Add to wishlist</span></a>
+                {% endif %}
+            </div>     
+    </div>
+    <div class="add-to-cart">
+        <a href="{% url 'store:details' product.id %}" type=button class="btn btn-danger" style="color:white; background-color:#d10024; width:200px; border:1px solid white; border-radius:30px;"><i class="fa fa-eye" aria-hidden="true"></i><span class="tooltipp">Quick View</span><class="fa fa-arrow-circle-right"></i></a>
+    </div>
+</div>
+<div class="tooltip tooltipp bs-tooltip-top" role="tooltip">
+    <div class="arrow"></div>
+    <div class="tooltip-inner">
+        add to wishlist
+    </div>
+  </div>

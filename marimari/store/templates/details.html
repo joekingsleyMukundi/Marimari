@@ -1,0 +1,195 @@
+{% extends 'base.html' %} {% load static %} {% block 'content' %}
+<div class="row ">
+    <div class="container">
+        {% if request.user.is_authenticated %}
+            {% if data %}
+                <div class="col-md-6 top-margin">
+                    <div class="w3-content w3-section" style="max-width:500px !important">
+                        <img class="mySlides  w3-animate-top" src="{{data.image1.url}}" style="width:100%"> 
+                        <img class="mySlides w3-animate-bottom" src="{{data.image2.url}}" style="width:100%">
+                        <img class="mySlides w3-animate-top" src="{{data.image3.url}}"style="width:100%">
+                        <img class="mySlides w3-animate-bottom" src="{{data.image4.url}}"style="width:100%">
+                    </div>         
+                </div>
+                {% else %}
+                <div class="col-md-6 top-margin">
+                    <div class="w3-content w3-section" style="max-width:500px !important">
+                        <img class="mySlides  w3-animate-top" src="{{product.image.url}}" style="width:100%"> 
+                    </div>       
+                </div> 
+            {% endif %}
+            {% else %}
+            {% if data %}
+            <div class="col-md-6 top-margin">
+                <div class="w3-content w3-section" style="max-width:500px !important">
+                    <img class="mySlides  w3-animate-top" src="{{data.image1.url}}" style="width:100%"> 
+                    <img class="mySlides w3-animate-bottom" src="{{data.image2.url}}" style="width:100%">
+                    <img class="mySlides w3-animate-top" src="{{data.image3.url}}"style="width:100%">
+                    <img class="mySlides w3-animate-bottom" src="{{data.image4.url}}"style="width:100%">
+                </div>         
+            </div>
+            {% else %}
+            <div class="col-md-6 top-margin">
+                <div class="w3-content w3-section" style="max-width:500px !important">
+                    <img class="mySlides  w3-animate-top" src="{{product.image.url}}" style="width:100%"> 
+                </div>       
+            </div> 
+            {% endif %}
+        {% endif %}
+
+        <div class="col-md-4 top-margin"> 
+                <h3 class="font-weight-semi-bold">{{product.product_name}}</h3>
+                <div class="d-flex styling">
+                    <div class="text-primary mr-2">                                       
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                    </div>
+                    <small class="pt-1">(50 Reviews)</small>
+                </div>
+                {% if request.user.is_authenticated %}
+                <h3 class="font-weight-semi-bold mb-4">
+                    {{product.product_cost}}
+                </h3>
+                {% else %}
+                    <h3 class="font-weight-semi-bold mb-4">
+                        {{product.product_cost}}
+                    </h3>
+                {% endif %}
+                <p class="mb-4">Discount is KES.{{product.discounts}}</p>
+                <p class="mb-4">{{product.description}}</p>
+                <div class="d-flex mb-3">
+                    <form class="styling">
+                        <p class="text-dark font-weight-medium mb-0  sizes">Sizes  : </p>
+                        <div class="custom-control custom-radio custom-control-inline margin">
+                            <input type="radio" class="custom-control-input" id="size-1" name="size">
+                            <label class="custom-control-label" for="size-1">XS</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline margin">
+                            <input type="radio" class="custom-control-input" id="size-2" name="size">
+                            <label class="custom-control-label" for="size-2">S</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline margin">
+                            <input type="radio" class="custom-control-input" id="size-3" name="size">
+                            <label class="custom-control-label" for="size-3">M</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline margin">
+                            <input type="radio" class="custom-control-input" id="size-4" name="size">
+                            <label class="custom-control-label" for="size-4">L</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline margin">
+                            <input type="radio" class="custom-control-input" id="size-5" name="size">
+                            <label class="custom-control-label" for="size-5">XL</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="d-flex mb-4">
+                    <form class="styling">
+                        <p class="text-dark font-weight-medium mb-0 colors">Colors: </p>
+                        <div class="custom-control custom-radio custom-control-inline ">
+                            <input type="radio" class="custom-control-input" id="color-1" name="color">
+                            <label class="custom-control-label" for="color-1">Black</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline ">
+                            <input type="radio" class="custom-control-input" id="color-2" name="color">
+                            <label class="custom-control-label" for="color-2">White</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline ">
+                            <input type="radio" class="custom-control-input" id="color-3" name="color">
+                            <label class="custom-control-label" for="color-3">Red</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline ">
+                            <input type="radio" class="custom-control-input" id="color-4" name="color">
+                            <label class="custom-control-label" for="color-4">Blue</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline ">
+                            <input type="radio" class="custom-control-input" id="color-5" name="color">
+                            <label class="custom-control-label" for="color-5">Green</label>
+                        </div>
+                    </form>
+                </div>
+                <div class="d-flex align-items-center justify-items-center mb-4 pt-2">
+                    {% if request.user.is_authenticated %}
+                    {% if product %}
+                            <button><a href="{% url 'orders:user_cart' product.id %}" class="btn btn-danger" type="submit" style="color:white; background-color:#d10024;"><i class="fa fa-shopping-cart"></i>add to cart</a></button>  
+                    {% else %} 
+                    <form  id="cart_quantity">  
+                        {% csrf_token %}             
+                        <input type="number" value="1">
+                        <input type="hidden"><br><br>
+                        <button><a href="{% url 'orders:user_cart' product.id %}" class="btn btn-danger" type="submit" style="color:white; background-color:#d10024;"><i class="fa fa-shopping-cart"></i>add to cart</a></button>  
+                    </form> 
+                    {% endif %}
+                    {% else %}
+                        <button type="hidden" class="btn" style="color:white; background-color:#d10024;margin-bottom:5px;"><i class="fa fa-shopping-cart"></i>add to cart</button>
+                        <p>Please <a href="{% url 'signin' %}" style="color:red; text-decoration:underline;">sign in</a> to be able to add to cart</p>
+                    {% endif %}
+                </div>      
+        </div>
+    </div>
+</div><br><br>
+
+
+<!-- items you like section -->
+ <div class="container">
+    <div class="row">
+        <div class="col-md-12 ">
+            <div class="section-title ">
+                <h3 class="title h3">More Products</h3>
+                <div class="section-nav ">
+                    <ul class="section-tab-nav tab-nav ">
+                        <li class="active "><a data-toggle="tab " href="#tab2">Laptops</a></li>
+                        <li><a data-toggle="tab " href="#tab2 ">Smartphones</a></li>
+                        <li><a data-toggle="tab " href="#tab2 ">Cameras</a></li>
+                        <li><a data-toggle="tab " href="#tab2 ">Accessories</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="products-tabs">
+
+                    <div id="tab1" class="tab-pane active">
+                        <div class="products-slick" data-nav="#slick-nav-1">
+                        {% for product in products %}
+                            {% include 'product.html' %}
+                        {% endfor %}
+                        </div>
+                        <div id="slick-nav-1 " class="products-slick-nav "></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+ </div>
+{% endblock %}
+{% block scripts %}
+<script>
+    $(document).ready(function(){
+            let form =$('#cart_quantity');
+            form.on('submit', function(e){
+                $.ajax({
+                    url:form.attr('action'),
+                    dataType:'json',
+                    data:form.serialize(),
+                    type:'POST',
+                    success:function(response){
+                        if(response.success){
+                            var server_response = response.data;
+                            console.log(server_response);
+                            e.preventDefault()
+                                }
+                            },
+
+                    error: function(error, status){
+                        console.error(error,status)
+                            }
+                     });
+            });
+        });
+</script>
+{% endblock %}

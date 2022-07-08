@@ -1,0 +1,14 @@
+{% load static %}
+<div class="product-widget product-under">
+    <div class="product-img">
+        <img src="{{product.image.url}}" alt="">
+    </div>
+    <div class="product-body">
+        <h3 class="product-name h3"><a href="{% url 'store:details' product.id %}">{{product.product_name}}</a></h3>
+        {% if products %}
+            <p id="demo"></p>
+        {% endif %}
+        <h4 class="product-price">Ksh.{{product.product_cost}}</h4>
+    </div>
+    <a href="{% url 'orders:user_cart' product.id  %}" class="delete"><i class="fa fa-close"></i></a>
+</div>
