@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+# appending slash (setting it to fasle to allow  mpesa callbacks to work)
+APPEND_SLASH=False
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,9 @@ SECRET_KEY = 'django-insecure-v0m8#8wv$%-37uufb64v8$xtm(9iu(yu%1u$nabrkaztjg0u=c
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'b55b-41-89-229-17.eu.ngrok.io'
+]
 
 
 # Application definition
